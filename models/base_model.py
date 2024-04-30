@@ -16,11 +16,10 @@ else:
 
 class BaseModel:
     """A base class for all hbnb models"""
-
     if models.storage_type == "db":
-        id = Column(VARCHAR(60), primary_key=True, nullable=False, unique=True) #this
-        created_at = Column(DateTime, default=datetime.now(), nullable=False) # this
-        updated_at = Column(DateTime, default=datetime.now(), nullable=False) # this
+        id = Column(VARCHAR(60), primary_key=True, nullable=False, unique=True)
+        created_at = Column(DateTime, default=datetime.now(), nullable=False) 
+        updated_at = Column(DateTime, default=datetime.now(), nullable=False)
 
     def __init__(self, *args, **kwargs):
         """Instatntiates a new model"""
