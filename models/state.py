@@ -9,7 +9,8 @@ import models
 
 class State(BaseModel, Base):
     """ State class """
-    if models.storage_type == "db":
+    # if models.storage_type == "db":
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
         cities = relationship("City", cascade='all, delete, delete-orphan', backref="state")
@@ -20,7 +21,8 @@ class State(BaseModel, Base):
         """initializes state"""
         super().__init__(*args, **kwargs)
 
-    if models.storage_type != "db":
+    # if models.storage_type != "db":
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
         @property
         def cities(self):
             """getter for list of city instances related to the state"""
